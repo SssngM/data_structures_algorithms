@@ -20,6 +20,7 @@ function isPrime(number) {
 
 
 
+
 // console.log(divisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
 // => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
 
