@@ -1,10 +1,10 @@
 
 // Write a function `isPrime(number)` that returns a boolean indicating if
 // `number` is prime or not. Assume `number` is a positive integer.
-console.log(isPrime(2)); // => true
-console.log(isPrime(1693)); // => true
-isPrime(15); // => false
-isPrime(303212); // => false
+// console.log(isPrime(2)); // => true
+// console.log(isPrime(1693)); // => true
+// isPrime(15); // => false
+// isPrime(303212); // => false
 
 function isPrime(number) {
   if (number < 2) {
@@ -21,13 +21,65 @@ function isPrime(number) {
 
 
 
-// console.log(divisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
-// => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
+// console.log(ivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
+// // => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
 
-// console.logd(ivisibleByThreePairSum([8, 3, 5, 9, 2]));
-// => [[1, 3]]
+// console.log(ivisibleByThreePairSum([8, 3, 5, 9, 2]));
+// // => [[1, 3]]
+
+function ivisibleByThreePairSum(arr) {
+  var pairs = []
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i+1 ; j < arr.length; j++) {
+      var sum = arr[i] + arr[j]
+      // console.log(sum)
+      if (sum % 3 === 0) {
+        pairs.push([i,j])
+      }
+    }
+  }
+  return pairs
+}
 
 
+// Assume that both input arrays have the same length.
+
+// var a1 = (['a', 'b', 'c', 'd']);
+// var a2 = [10, 20, 30, 40];
+
+// console.log(zipArray(a1, a2))
+// // => [ [ 'a', 10 ], [ 'b', 20 ], [ 'c', 30 ], [ 'd', 40 ] ]
+
+
+
+function zipArray(arr1, arr2) {
+  var res = []
+  for (var i = 0; i < arr1.length; i++){
+    var res1 = arr1[i]
+    var res2 = arr2[i]
+    res.push([res1,res2])
+  }
+  return res
+}
+
+
+
+
+// returns the total sum of all elements.
+var arr1 = [
+  [5, 2, 5, 3],
+  [12, 13],
+];
+
+console.log(twoDimensionalTotal(arr1)); // => 40
+
+var arr2 = [
+  [2],
+  [1, 9],
+  [1, 1, 1]
+]
+
+console.log(twoDimensionalTotal(arr2)); // => 15
 
 
 
