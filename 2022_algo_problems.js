@@ -1,3 +1,218 @@
+/***********************************************************************
+Write a function `factorial(n)`, that returns the factorial of the
+number `n`. For example, the factorial of 4 is `4 * 3 * 2 * 1 = 24`.
+
+Examples:
+
+factorial(1); // => 1
+factorial(4); // => 24
+factorial(5); // => 120
+factorial(10); // => 3628800
+***********************************************************************/
+
+function factorial(n) {
+  var product = 1;
+
+  for (var i = 1; i <= n; i += 1) {
+    product *= i;
+  }
+
+  return product;
+}
+
+
+/***********************************************************************
+Write a function `power(base, exp)` that takes in two numbers, a base
+and exponent. The function should return `base` raised to `exp` power.
+Solve this using a loop.
+
+For example, power(2, 5) is 2 raised to the 5th power,
+which is 2 * 2 * 2 * 2 * 2 = 32
+
+Examples:
+
+power(2, 5); // => 32
+power(2, 10); // => 1024
+power(9, 2); // => 81
+power(9, 3); // => 729
+power(11, 0); // => 1
+power(11, 1); // => 11
+***********************************************************************/
+
+function power(base, exp) {
+  var product = 1;
+
+  for (var i = 0; i < exp; i += 1) {
+    product *= base;
+  }
+
+  return product;
+}
+
+
+
+
+// mindPsAndQs('BOOTCAMP'); // => 1
+console.log(mindPsAndQs('APCDQQPPC')); // => 4
+// mindPsAndQs('PQPQ'); // => 4
+console.log(mindPsAndQs('PPPXQPPPQ')); // => 5
+
+
+
+function mindPsAndQs(str) {
+    let long = 0 // 4
+    let cur = 0 // 0
+    for (let i of str) {
+      // console.log(i)
+        if (i === 'P' || i === 'Q') {
+            cur += 1; // 5
+        } else {
+          cur = 0;
+        }
+        
+
+        if (cur > long) { // 5 >0 
+          long = cur // 5
+        }
+    }
+    return long;
+}
+
+
+
+
+/***********************************************************************
+Write a function oddWordsOut(sentence) that takes in a sentence string
+and returns the sentence where words with an odd number of characters
+are removed.
+***********************************************************************/
+
+console.log(oddWordsOut('go to the store and buy milk')); // => 'go to milk'zz
+oddWordsOut('what is the answer'); // => 'what is answer'
+
+
+function oddWordsOut(sentence) {
+    let word = sentence.split(' ') // [ go, to, the, ...]
+    let str = []
+    for (let i of word) {
+      if(i.length % 2 === 0) {
+        str.push(i)
+      } 
+    }
+
+    return str.join(' ')
+}
+
+
+// unique([1,23,2,4,5,1,23]) //=> [1, 23, 2, 4, 5];
+
+function unique(array) {
+  var uniqueArray = [];
+
+  for (var i = 0; i < array.length; i += 1) {
+    var ele = array[i];
+
+    if (uniqueArray.indexOf(ele) === -1) {
+      uniqueArray.push(ele);
+    }
+  }
+  
+  return uniqueArray;
+}
+
+
+
+console.log(hasAllVowels('get out of the way, silly')); // => true
+console.log(hasAllVowels('bootcamp prep')); // => false
+
+function hasAllVowels(str) {
+  let vowels = ['a', 'e', 'e', 'o', 'u']
+  for (let vowel of vowels) {   // vowel = vowels[i]
+      if (str.indexOf(vowel) === -1) {
+          return false
+      }
+  } return true
+}
+
+
+
+
+// console.log(abbreviate('how are you')); // => 'how are you'
+// console.log(abbreviate('bootcamp prep is fun'))
+
+// function abbreviate(sentence) {
+//   let word = sentence.split(' ')
+  
+//   if (word.length > 4) {
+//   var noVowels = word.replace(/[aeiou]/gi, '');
+//   return noVowels
+//   } else { 
+//     var newSen = word.join(' ')
+//     return newSen
+//   }   
+// } 
+
+
+console.log(removeVowels('how are you')); // => 'how are you')))
+
+function removeVowels(word){
+
+  let vowels = ['a','e','i','o','u'];
+   let string = '';
+  
+     for(let i = 0; i < word.length; i++){
+       if(!vowels.includes(word[i])){
+          string += word[i]
+         };
+        };
+  return string 
+  };
+
+
+
+// console.log(avgValue([10, 20])); // => 15
+// avgValue([2, 3, 7]); // => 4
+// avgValue([100, 60, 64]); // => 74.66666666666667
+
+function avgValue(array) {
+    var sum = 0 
+    for (var i = 0; i < array.length; i++ ) {
+        sum += array[i]
+    }  
+    var total = sum / array.length
+    return total
+}
+
+
+// console.log(isOdd(2));    // => false
+// console.log(isOdd(5));    // => true
+// console.log(isOdd(-17));  // => true
+
+function isOdd(num) {
+  // your code here...
+  if (num % 2 === 0) {
+    return true
+    console.log(num)
+  } return false
+}
+
+
+
+
+var a1 = ['a', 'b', 'c'];
+var a2 = ['w', 'x', 'y'];
+var a3 = [1, 3, 7, 4];
+
+// console.log(diffArrayLen(a1, a2)); // => false (a1, a2 is not dffer arrays)
+// diffArrayLen(a1, a3); // => true
+
+function diffArrayLen(arr1, arr2) {
+    if (arr1.length !== arr2.length) {
+        return true
+    } return false
+}
+
+
 
 // Write a function `isPrime(number)` that returns a boolean indicating if
 // `number` is prime or not. Assume `number` is a positive integer.
@@ -6,29 +221,88 @@
 // isPrime(15); // => false
 // isPrime(303212); // => false
 
-function isPrime(number) {
-  if (number < 2) {
-    return false
-  }
+// function isPrime(number) {
+//   if (number < 2) {
+//     return false
+//   }
 
-  for (var i = 2; i < number; i+= 1) {
-    if (number % i === 0)
-    return false
+//   for (var i = 2; i < number; i+= 1) {
+//     if (number % i === 0)
+//     return false
+//   }
+//   return true
+// }
+
+console.log(commonPrimeFactors(11,22)); // => [ 11 ]
+console.log(commonPrimeFactors(45, 60)); // => [ 3, 5 ]
+
+
+
+function commonPrimeFactors(num1, num2) {
+  var factors = [] // 3, 5, 15
+  var pirmefactor = []
+  for (let i = 2; i <= num1; i++) { 
+    if (num1 % i === 0 &&  num2 % i === 0) {
+      factors.push(i)
+    }
+
+  for (let j= 0; j <= factors.length; j++ ) // 3, 5, 15
+    if (isPrime(factors[j])) {
+      pirmefactor.push(factors[i])
+    }
   }
+  return pirmefactor
+}
+
+
+function isPrime(num)  { // [5] {
+  for (let i = 2; i < num ; i++) {
+    if (num % i === 0) {
+      return false
+    }
+  } 
   return true
+}
+
+// unique([1,23,2,4,5,1,23]) //=> [1, 23, 2, 4, 5];
+
+// function unique(array) {
+//   var uniqueArray = [];
+
+//   for (var i = 0, i <= array.length, i += 1) {
+//     var ele = array[i];
+
+//     if (uniqueArray.indexOf(ele) === -1) {
+//       uniqueArray.push(ele);
+//     }
+//   }
+// }
+
+
+// A factor is a number that divides another number with no remainder.
+// console.log(commonFactors(6, 24))// => [ 1, 2, 3, 6 ]
+commonFactors(11, 22); // => [ 1, 11 ]
+commonFactors(45, 60); // => [ 1, 3, 5, 15 ]
+
+
+function commonFactors(num1, num2) {
+  let arr = []
+  for (let i=1; i<=num1; i++) {
+    if ( num1 % i === 0  && num2 % i === 0) {
+      arr.push(i)
+    }
+  } return arr
 }
 
 
 
-
-
-// console.log(ivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
+// console.log(DivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
 // // => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
 
-// console.log(ivisibleByThreePairSum([8, 3, 5, 9, 2]));
+// console.log(DivisibleByThreePairSum([8, 3, 5, 9, 2]));
 // // => [[1, 3]]
 
-function ivisibleByThreePairSum(arr) {
+function DivisibleByThreePairSum(arr) {
   var pairs = []
   for (var i = 0; i < arr.length; i++) {
     for (var j = i+1 ; j < arr.length; j++) {
@@ -72,7 +346,7 @@ var arr1 = [
   [12, 13],
 ];
 
-console.log(twoDimensionalTotal(arr1)); // => 40
+// console.log(twoDimensionalTotal(arr1)); // => 40
 
 var arr2 = [
   [2],
@@ -80,10 +354,49 @@ var arr2 = [
   [1, 1, 1]
 ]
 
-console.log(twoDimensionalTotal(arr2)); // => 15
+// console.log(twoDimensionalTotal(arr2)); // => 15
+
+function twoDimensionalTotal(array) {
+  var total = 0;
+
+  for (var i = 0; i < array.length; i += 1) {
+    for (var j = 0; j < array[i].length; j += 1) {
+      total += array[i][j];
+    }
+  }
+
+  return total;
+}
 
 
 
+
+// console.log(diagonalDifference(arr)) = > 15
+var arr = 
+[[11, 2, 4],
+[ 4, 5, 6],
+[ 10, 8, -12]]
+
+// 11 + 5 - 12 = 4 ,  4 + 5 + 10 = 19 , |4 - 19| = 15
+
+function diagonalDifference(arr) {
+  // Write your code here
+  var diagonal1 = 0
+  var diagonal2 = 0
+  for (var i=0; i<arr.length; i++) {
+      for ( var j=0; j<arr.length; j++) {
+          if ( i == j) 
+          diagonal1 += arr[i][j] // arr[0][0]
+          if ( i == arr.length-j-1) // 3-0-1 = 2
+          diagonal2 += arr[i][j] // arr[2][2]
+      }
+     
+     
+      // console.log (diagonal2 )
+  }
+  return Math.abs(diagonal1-diagonal2)
+  
+}
 
 
 
@@ -94,11 +407,12 @@ console.log(twoDimensionalTotal(arr2)); // => 15
 function miniMaxSum(arr) {
   var total = 0;
   for (var i = 0; i < arr.length; i++) {
-    total += arr[i] //15
+    // total += arr[i] //15
   }
-
-  let min = total - Math.max(...arr) //10
-  let max = total - Math.min(...arr) // 14
+  let min = Math.min(...arr)
+  let max = Math.max(...arr)
+  // let min = total - Math.max(...arr) //10
+  // let max = total - Math.min(...arr) // 14
   // console.log(max, min)
   return [min, max];
 
@@ -114,7 +428,7 @@ function miniMaxSum(arr) {
 
 
 
-// console.log(birthdayCakeCandles([3, 2, 1, 3]))  // 2
+// console.log(birthdayCakeCandles([3, 2, 1, 3]))  // 2 (biggiest number is 3 but two of them)
 
 function birthdayCakeCandles(candles) {
   var total = 0
@@ -126,7 +440,7 @@ function birthdayCakeCandles(candles) {
       total = 1
       // console.log(max)
     } else if (max == cur) {
-      total++
+      total++ 
     }
   }
   return total
@@ -181,7 +495,7 @@ function countApplesAndOranges(s, t, a, b, apples, oranges) {
       totalOranges++
     }
   }
-  console.log(totalApples, totalOranges)
+  // console.log(totalApples, totalOranges)
 }
 
 
@@ -271,7 +585,7 @@ function birthday(s, d, m) {
 // }
 
 
-console.log(dayOfProgrammer(2017))
+// console.log(dayOfProgrammer(2017))
 
 function dayOfProgrammer(year) {
   var y = year //2017
@@ -489,10 +803,10 @@ function getMaxMin(arr) {
 
 // // code Signal 
 
-console.log(rotateImage (
-  [[1, 2, 3],       //  00   01  02  = > 20  10   00
-  [4, 5, 6],        //  10   11  12  =>  21  11   01
-  [7, 8, 9]]))      //  20   21  22  =>  22  12   02
+// console.log(rotateImage (
+//   [[1, 2, 3],       //  00   01  02  = > 20  10   00
+//   [4, 5, 6],        //  10   11  12  =>  21  11   01
+//   [7, 8, 9]]))      //  20   21  22  =>  22  12   02
 
 function rotateImage(a) {                       
   var res = []                                       // want i is fix as 2 1 0 and run j 0 1 2
@@ -507,7 +821,7 @@ function rotateImage(a) {
 }
 
 
-console.log(toFindDuplicates([2, 1, 3, 5, 3, 2])) // 3 - 2 is big index gap
+// console.log(toFindDuplicates([2, 1, 3, 5, 3, 2])) // 3 - 2 is big index gap
 
 // console.log(solution(['a, b, c, c, f, a'])) 
 
@@ -608,7 +922,7 @@ function getCounts(s) {
 
 //where one number is taken from a and the other from b, that can be added together to get a sum of v. Return true if such a pair exists, otherwise return false.
 
-console.log(twoOfSum([1, 2, 3], [10, 20, 30, 40], 42))
+// console.log(twoOfSum([1, 2, 3], [10, 20, 30, 40], 42))
 
 // function twoOfSum(a, b, v) {     /// quardatic n*n
 //   for (let i = 0; i < a.length; i++) {
@@ -773,7 +1087,7 @@ function isLunky(n) {
           right += arr[i]
       } 
     } 
-  console.log(left,right)
+  // console.log(left,right)
   if (left != right ) {
       return false
   } else {
