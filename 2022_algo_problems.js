@@ -11,10 +11,10 @@ factorial(10); // => 3628800
 ***********************************************************************/
 
 function factorial(n) {
-  var product = 1;
+  var product = 1; // 2 / 6 
 
   for (var i = 1; i <= n; i += 1) {
-    product *= i;
+    product *= i; // 1 * 2 *3 
   }
 
   return product;
@@ -42,20 +42,55 @@ power(11, 1); // => 11
 function power(base, exp) {
   var product = 1;
 
-  for (var i = 0; i < exp; i += 1) {
-    product *= base;
+  for (var i = 0; i < exp; i += 1) { // 5 times of i (include first one 0)
+    product *= base; // 1 * 2 * 2 * 2 * 2 * 2
   }
 
   return product;
 }
 
 
+//returns the lowest number which is a multiple of both num1 and num2.
+
+// console.log(lcm(6, 10)); // => 30
+// console.log(lcm(24, 26)); // => 312)
+
+function lcm(num1, num2) {
+let i = num1
+  for (i = num1; i <= num1*num2; i+i) {
+    if (i % num2 === 0) {
+      return i
+    }
+    i += num1 // 6 + 6 + 6 
+  }
+}
+
+
+//returns the number of words longer than 7 characters.
+
+// longWordCount("short words only"); // => 0
+// console.log(longWordCount("one reallylong word")); // => 1
+
+
+function longWordCount(sentence) {
+  let words = sentence.split(' ') // [ 'one', 'reallylong', 'word' ]
+  let count = 0
+  for (let i = 0; i <= words.length-1; i++) {
+    if (words[i].length > 7) {
+      count ++
+    }
+  } 
+  return count
+}
+
+
+
 
 
 // mindPsAndQs('BOOTCAMP'); // => 1
-console.log(mindPsAndQs('APCDQQPPC')); // => 4
+// console.log(mindPsAndQs('APCDQQPPC')); // => 4
 // mindPsAndQs('PQPQ'); // => 4
-console.log(mindPsAndQs('PPPXQPPPQ')); // => 5
+// console.log(mindPsAndQs('PPPXQPPPQ')); // => 5
 
 
 
@@ -87,7 +122,7 @@ and returns the sentence where words with an odd number of characters
 are removed.
 ***********************************************************************/
 
-console.log(oddWordsOut('go to the store and buy milk')); // => 'go to milk'zz
+// console.log(oddWordsOut('go to the store and buy milk')); // => 'go to milk'zz
 oddWordsOut('what is the answer'); // => 'what is answer'
 
 
@@ -104,29 +139,53 @@ function oddWordsOut(sentence) {
 }
 
 
-// unique([1,23,2,4,5,1,23]) //=> [1, 23, 2, 4, 5];
+console.log(unique([1,23,2,4,5,1,23]) )//=> [1, 23, 2, 4, 5];
+console.log(unique([1,2,5]))
+// function unique(array) {
+//   var uniqueArray = [];
 
-function unique(array) {
-  var uniqueArray = [];
+//   for (var i = 0; i < array.length; i += 1) {
+//     var ele = array[i];
 
-  for (var i = 0; i < array.length; i += 1) {
-    var ele = array[i];
-
-    if (uniqueArray.indexOf(ele) === -1) {
-      uniqueArray.push(ele);
-    }
-  }
+//     if (uniqueArray.indexOf(ele) === -1) {
+//       uniqueArray.push(ele);
+//     }
+//   }
   
-  return uniqueArray;
+//   return uniqueArray;
+// }
+
+
+// It should return an array of all the pairs of indices, whose elements sum to a multiple of 3.
+
+var arr1 = divisibleByThreePairSum([1, 6, 3, 4, 2, 0]);
+console.log(arr1) //=> [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
+
+function divisibleByThreePairSum(array) {
+
+
+}
+
+// sum of array bigger than 5 less than 10
+function unique(array) {
+  let sum = 0 // 59 
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+    if (sum > 5 && sum < 10) {
+      return sum
+    }
+  } return 'too big'
 }
 
 
 
-console.log(hasAllVowels('get out of the way, silly')); // => true
-console.log(hasAllVowels('bootcamp prep')); // => false
+
+// have to all 5 vowels
+// console.log(hasAllVowels('get out of the way, silly')); // => true
+// console.log(hasAllVowels('bootcamp prep')); // => false
 
 function hasAllVowels(str) {
-  let vowels = ['a', 'e', 'e', 'o', 'u']
+  let vowels = ['a', 'e', 'i', 'o', 'u']
   for (let vowel of vowels) {   // vowel = vowels[i]
       if (str.indexOf(vowel) === -1) {
           return false
@@ -135,6 +194,61 @@ function hasAllVowels(str) {
 }
 
 
+// console.log(threeUniqueVowels('go home')); // => false
+
+
+// function threeUniqueVowels(string) {
+//   let vowels = ['a','e', 'i', 'o', 'u']
+//   let vowelsNum = 0
+//   for ( let vowel of vowels) {
+//     if (string.indexOf(vowel) > -1) {
+//       vowelsNum ++
+//       console.log(vowelsNum)
+//     }
+//   } if (vowelsNum >= 3) {
+//     return true
+//   }
+//   return false // or (vowelsNum >= 3) 
+// } 
+
+
+
+//The function should return true if the strings are anagrams of each other, false otherwise.
+
+console.log(isUniqueAnagram('abcd', 'abcdx')); // => false
+console.log(isUniqueAnagram('abcd', 'adcb')); // => true
+
+function isUniqueAnagram(word1, word2) {
+  if (word1.length !== word2.length) {
+    return false
+  }
+  for (let char of word1) {
+    if (word2.indexOf(char)=== -1) {
+      return false
+    }
+  }
+  return true
+}
+
+
+
+
+// console.log(vowelShift('bootcamp')); // => 'buutcemp'
+
+function vowelShift(string) {
+  let vowels = 'aeioua'; // 3
+  let newStr= ''
+  for ( let i = 0; i <= string.length-1; i++) { // 3
+    if (vowels.includes(string[i]) === false) { // false 3
+      newStr += string[i] // b
+      // console.log(newStr)
+    } else { // o
+      var newIdx = vowels.indexOf(string[i]) + 1  // vowels's index num is 3 + 1
+      newStr += vowels[newIdx] // 
+    }
+  }
+  return newStr
+} 
 
 
 // console.log(abbreviate('how are you')); // => 'how are you'
@@ -153,7 +267,7 @@ function hasAllVowels(str) {
 // } 
 
 
-console.log(removeVowels('how are you')); // => 'how are you')))
+console.log(removeVowels('how are you')); // => 'hw r y')))
 
 function removeVowels(word){
 
@@ -161,9 +275,10 @@ function removeVowels(word){
    let string = '';
   
      for(let i = 0; i < word.length; i++){
-       if(!vowels.includes(word[i])){
+      //  if(!vowels.includes(word[i])){
+        if (vowels.indexOf(word[i]) === -1) {
           string += word[i]
-         };
+          };
         };
   return string 
   };
@@ -192,7 +307,7 @@ function isOdd(num) {
   // your code here...
   if (num % 2 === 0) {
     return true
-    console.log(num)
+    // console.log(num)
   } return false
 }
 
@@ -221,39 +336,35 @@ function diffArrayLen(arr1, arr2) {
 // isPrime(15); // => false
 // isPrime(303212); // => false
 
-// function isPrime(number) {
-//   if (number < 2) {
-//     return false
-//   }
+function isPrime(number) {
+  if (number < 2) {
+    return false
+  }
 
-//   for (var i = 2; i < number; i+= 1) {
-//     if (number % i === 0)
-//     return false
-//   }
-//   return true
-// }
+  for (var i = 2; i < number; i+= 1) {
+    if (number % i === 0)
+    return false
+  }
+  return true
+}
 
-console.log(commonPrimeFactors(11,22)); // => [ 11 ]
+// console.log(commonPrimeFactors(11,22)); // => [ 11 ]
 console.log(commonPrimeFactors(45, 60)); // => [ 3, 5 ]
 
 
 
 function commonPrimeFactors(num1, num2) {
-  var factors = [] // 3, 5, 15
-  var pirmefactor = []
+  var factors = [] // 3, 5
+  // var pirmefactor = []
   for (let i = 2; i <= num1; i++) { 
     if (num1 % i === 0 &&  num2 % i === 0) {
-      factors.push(i)
-    }
-
-  for (let j= 0; j <= factors.length; j++ ) // 3, 5, 15
-    if (isPrime(factors[j])) {
-      pirmefactor.push(factors[i])
+      if (isPrime(i)) {
+        factors.push(i)
+      }
     }
   }
-  return pirmefactor
+  return factors;
 }
-
 
 function isPrime(num)  { // [5] {
   for (let i = 2; i < num ; i++) {
@@ -296,24 +407,22 @@ function commonFactors(num1, num2) {
 
 
 
-// console.log(DivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
-// // => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
+console.log(DivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
+// => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]] with index number
 
 // console.log(DivisibleByThreePairSum([8, 3, 5, 9, 2]));
 // // => [[1, 3]]
 
 function DivisibleByThreePairSum(arr) {
-  var pairs = []
-  for (var i = 0; i < arr.length; i++) {
-    for (var j = i+1 ; j < arr.length; j++) {
-      var sum = arr[i] + arr[j]
-      // console.log(sum)
-      if (sum % 3 === 0) {
-        pairs.push([i,j])
+  let newArr = []
+  for (let i =0; i < arr.length; i++) {
+    for (let j = i+1; j< arr.length; j++) {
+      if ((arr[i]+ arr[j]) % 3 === 0) {
+        newArr.push([i, j])
       }
     }
   }
-  return pairs
+  return newArr
 }
 
 
@@ -339,6 +448,23 @@ function zipArray(arr1, arr2) {
 
 
 
+// console.log(splitHalfArray([1, 2, 3, 4, 5]));
+// => [ [ 1, 2 ], [ 4, 5 ] ]
+// console.log(splitHalfArray(['a', 'b', 'c', 'd', 'e', 'f']));
+// => [ [ 'a', 'b', 'c' ], [ 'd', 'e', 'f' ] ]
+
+function splitHalfArray(array) {
+  let newArr = []
+  var mid = array.length / 2
+
+    if (array.length  % 2 === 0) {
+      mid = Math.floor(mid) 
+      newArr.push(array.slice(0,mid),array.slice(mid) )
+    } else {
+      newArr.push(array.slice(0,mid),array.slice(mid+1) )
+    }
+    return newArr
+}
 
 // returns the total sum of all elements.
 var arr1 = [
@@ -791,12 +917,34 @@ function getMaxMin(arr) {
 }
 
 
-// const arr = [1, 2, 3];
 
-// arr.forEach(console.log)
+// console.log(isSorted([9, 4, 1, 5, 6, 2])); // => false
+// console.log(isSorted([1, 2, 4, 5, 6, 9])); // => true
 
 
+function isSorted(array) {
+  for (let i=0; i <  array.length; i++) {
+    if (array[i] > array[i+1]){
+      return false
+    } 
+  } 
+  return true
+}
 
+
+// if consecutive speeds in the array differ by no more than 5, false otherwise.
+console.log(safeSpeedChange([3, 3, 2, 6, 8, 10])); // => false
+console.log(safeSpeedChange([8, 10, 4, 3, 2])); // => false
+
+
+function safeSpeedChange(speeds) {
+  for (let i=0; i < speeds.length; i++) {
+    if (Math.abs(speeds[i] - speeds[i+1]) > 5) { 
+      return false
+    }
+  }
+  return true
+}
 
 
 
