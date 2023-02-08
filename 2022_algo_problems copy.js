@@ -161,8 +161,20 @@ console.log(unique([1,2,5]))
 var arr1 = divisibleByThreePairSum([1, 6, 3, 4, 2, 0]);
 console.log(arr1) //=> [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]]
 
-function divisibleByThreePairSum(array) {
 
+function divisibleByThreePairSum(array) {
+  let count = 0
+  let arr = []
+  for (let i =0; i < array.length; i++) {
+      for (let j =i+1; j <array.length; j++) {
+          if ((array[i] + array[j]) % 3 === 0) {
+              count++
+              arr.push([array[i], array[j]])
+          }
+      }
+  }
+  console.log(arr) 
+  return count // 5
 
 }
 

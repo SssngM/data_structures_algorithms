@@ -1,3 +1,5 @@
+// day1
+
 // Write a function evenRange(start, end) that returns an array containing all even
 // numbers between 'start' and 'end' in sequential order.
 
@@ -60,8 +62,8 @@ function intersect(arr1, arr2) {
 // the max. Each number should be either divisible by 2 or 7, BUT NOT BOTH.
 
 
-console.log(fuzzBizz(17)) //=> [ 2, 4, 6, 7, 8, 10, 12, 16 ]
-console.log(fuzzBizz(30)) //=> [ 2, 4, 6, 7, 8, 10, 12, 16, 18, 20, 21, 22, 24, 26 ]
+// console.log(fuzzBizz(17)) //=> [ 2, 4, 6, 7, 8, 10, 12, 16 ]
+// console.log(fuzzBizz(30)) //=> [ 2, 4, 6, 7, 8, 10, 12, 16, 18, 20, 21, 22, 24, 26 ]
 
 
 function fuzzBizz(max) {
@@ -85,9 +87,9 @@ function fuzzBizz(max) {
 
 // Examples:
 
-console.log(arrayRange(0, 12, 2))// => [ 0, 2, 4, 6, 8, 10, 12 ]
-console.log(arrayRange(2, 5, 1))// => [ 2, 3, 4, 5 ]
-console.log(arrayRange(100, 20, 3))// => []
+// console.log(arrayRange(0, 12, 2))// => [ 0, 2, 4, 6, 8, 10, 12 ]
+// console.log(arrayRange(2, 5, 1))// => [ 2, 3, 4, 5 ]
+// console.log(arrayRange(100, 20, 3))// => []
 
 
 function arrayRange(min, max, step) {
@@ -97,3 +99,215 @@ function arrayRange(min, max, step) {
     }
     return arr
   }
+
+
+// find pair of sock 10 is 4 (2pair) + 20 is 3 (1pair)
+
+console.log(sockMerchant([10, 20, 20, 10, 10, 30, 50, 10, 20]))
+
+var ar = [10, 20, 20, 10, 10, 30, 50, 10, 20]
+
+
+function sockMerchant(ar) { 
+    // hash tag 
+    var count = numCounts(ar)
+    var pair = 0
+    for (let key in count) {
+        var remainder = Math.floor(count[key] / 2)
+            pair += remainder
+    }
+    return  pair
+}
+ 
+
+
+function numCounts(ar) {  //  { '10': 4, '20': 3, '30': 1, '50': 1 }
+    var count = {}
+    // console.log(ar)
+    // for (let cur of ar) {
+    for (var i = 0; i < ar.length; i++) {
+        var cur = ar[i];
+    // console.log(cur)
+        if (count[cur] === undefined) {
+            count[cur] = 1
+        } else {
+            count[cur] += 1
+        }
+  
+    }
+    console.log(count)
+    return count
+}
+ 
+
+ 
+
+  // day 2
+
+//   Write a function mysticNumbers(max) that returns an array of numbers less than `max`.
+//   Each number should be either divisible by 4 or 6, BUT NOT BOTH. The numbers
+//   should be in reverse-sequential order.
+  
+  
+
+console.log(mysticNumbers(25)) //=> [ 20, 18, 16, 8, 6, 4 ]
+console.log(mysticNumbers(14)) //=> [ 8, 6, 4 ]
+
+
+function mysticNumbers(max) {
+    var arr = []
+    for (let i = max; i > 0 ; i-- ) {
+        if ((i % 4 === 0 || i % 6 === 0) && (i % 12 !== 0 )) {
+            arr.push(i)
+        }
+    }
+    return arr
+}
+
+
+
+
+console.log(isSquare(18)) //=> false
+console.log(isSquare(25)) //=> true
+console.log(isSquare(36)) //=> true
+
+
+function isSquare(number) {
+    for (let i = 1; i < number; i++) {
+        if (i * i === number) {
+            return true
+        }
+    }
+    return false
+}
+
+
+
+// - the first element if there is an even number of elements in the array
+
+// - the last element if there is an odd number of elemetns in the array
+
+// You can assume the array contains at least one elemen)t
+
+
+
+console.log(firstOrLast(['a', 'b', 'c', 'd']))// => 'a'
+console.log(firstOrLast(['Jenny', 'Mary', 'Mark'])) //=> 'Mark'
+
+function firstOrLast(array) {
+    var str = ''
+    for (let i =0 ; i < array.length; i++) {
+        if (array.length % 2 === 0) {
+            str = array[0]
+        } else {
+            str = array[array.length-1]
+        }
+    }
+    return str
+}
+
+
+
+// Write a function `minMaxProduct(array)` that return the product between the
+// largest value and the smallest value in the array. Assume `array` is an array of
+// numbers. Assume an array of at least two numbers.
+
+// Examples:
+
+console.log(minMaxProduct([6, 3, 7, 2])) //=> 14
+console.log(minMaxProduct([0, 1, -5, 3, 6]))// => -30
+
+function minMaxProduct(array){
+    var pro = [] 
+    var max = array[0]
+    var min = array[0]
+    for (let cur of array) {
+        if (cur ===  null || cur > max) {
+            max = cur // 6
+        } 
+        if ( cur === null || cur < min) {
+            min = cur
+        }
+    }
+    pro = max * min
+    return pro
+}
+
+
+console.log(valueReplace(['a', 'b', 'c', 'd'], {a: 1, b: 2, d: 4}))
+//=> [ 1, 2, 'c', 4 ]
+
+valueReplace(['danny', 'kurstie', 'tommy'], {kurstie: 'operations', danny: 'placements'})
+//=> [ 'placements', 'operations', 'tommy' ]
+
+
+
+function valueReplace(array, obj){
+    var arr = []
+    for (let key of array) {
+        if (obj[key] === undefined) {
+            arr.push(key)
+        } else {
+            arr.push(obj[key])
+        }
+    }
+    return arr
+}
+
+
+// day 4
+
+console.log(objectToString({a : 2, b: 4, c: 1})) //=> 'aabbbbc'
+console.log(objectToString({b: 1, o: 2, t: 1})) //=> 'boot'
+
+function objectToString(count) {
+  // your code here...
+  var str = ''
+  for (let key in count) {
+    // console.log(key) // abc
+    // console.log(count[key]) // 2 4 1
+    for (let i=0; i< count[key]; i++) {
+         str = key
+    }
+  }
+  return str
+}
+
+
+
+console.log(valueConcat(['alex', 'maurice', 'meagan', 'ali'], {alex: 'bronca', ali: 'harris'}))
+//=> [ 'alexbronca', 'maurice', 'meagan', 'aliharris' ]
+
+console.log(valueConcat(['a', 'b', 'c'], {b: 2, c: 3}))
+//=> [ 'a', 'b2', 'c3' ]
+
+function valueConcat(array, obj) {
+    var arr =[]
+
+    for (let ele of array) {
+        var value = obj[ele]
+        if ( ele === undefined) {
+            arr.push(ele)
+        } else {
+            arr.push(ele+value)
+        }
+    }
+    return arr
+}
+
+
+console.log(shortestWord('app academy is cool')) //=> 'is'
+console.log(shortestWord('bootcamp prep'))// => 'prep'
+
+function shortestWord(sentence) {
+    var str = ''
+    var words = sentence.split(' ')
+    var shortLen = null
+    for (let word of words) {
+
+        if ( shortLen === null ||  word.length < shortLen.length) {
+            shortLen = word
+        } 
+    } 
+    return shortLen
+}
