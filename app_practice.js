@@ -264,8 +264,8 @@ function objectToString(count) {
   // your code here...
   var str = ''
   for (let key in count) {
-    // console.log(key) // abc
-    // console.log(count[key]) // 2 4 1
+    // console.log(key) // key abc
+    console.log(count[key]) // val 2 4 1
     for (let i=0; i< count[key]; i++) {
          str += key
     }
@@ -330,22 +330,28 @@ var assessments1 = [
   {number: 5, score: 85}
 ];
 
-// obj = {
-//     one: 1,
-//     two: 2,
-//     three: 3,
-// }
+var obj = {
+    one: 'Seung',
+    one: 'Seung2',
+    two: 2,
+    three: 'Nate',
+}
 
-// for (let key in obj) {
-//   let val = obj[key];
+console.log(objectPractice(obj))
 
-//   console.log(key)
-//   console.log(val)
-// }
+function objectPractice(obj) {
 
+    for (let key in obj) {
+    let val = obj[key];
+    // console.log(key)
+    // console.log(val)
+    console.log(Object.keys(obj))
+    console.log(Object.values(obj))
+    // console.log( [key, val])
+    } 
+}
 
-
-// keys = Object.entities(obj);
+// keys = Object.keys(obj);
 // [one,two,three]
 
 // for (let i = 0; i < keys.lenght; i++) {
@@ -507,7 +513,7 @@ function hasSymmetry(array) {
     var mid = array.length/ 2
  
     for (let i =0; i < array.length ; i++) {
-        console.log([array.length-1-i]) 
+        // console.log([array.length-1-i]) 
         if (array[i] !== array[array.length-1-i]) { //  6-1-0 5
             return false
         }
