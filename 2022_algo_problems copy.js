@@ -545,12 +545,12 @@ function diagonalDifference(arr) {
 function miniMaxSum(arr) {
   var total = 0;
   for (var i = 0; i < arr.length; i++) {
-    // total += arr[i] //15
+    total += arr[i] //15
   }
-  let min = Math.min(...arr)
-  let max = Math.max(...arr)
-  // let min = total - Math.max(...arr) //10
-  // let max = total - Math.min(...arr) // 14
+  // let min = Math.min(...arr)
+  // let max = Math.max(...arr)
+  let min = total - Math.max(...arr) //10
+  let max = total - Math.min(...arr) // 14
   // console.log(max, min)
   return [min, max];
 

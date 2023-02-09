@@ -267,7 +267,7 @@ function objectToString(count) {
     // console.log(key) // abc
     // console.log(count[key]) // 2 4 1
     for (let i=0; i< count[key]; i++) {
-         str = key
+         str += key
     }
   }
   return str
@@ -310,4 +310,207 @@ function shortestWord(sentence) {
         } 
     } 
     return shortLen
+}
+
+
+// day 5
+
+/*******************************************************************************
+Write a function isPassing(assessments) that takes in an array of assessment objects.
+The function should return a true if the average assessment score is at least 70.
+It should return false otherwise.
+
+Examples:
+*******************************************************************************/
+var assessments1 = [
+  {number: 1, score: 60},
+  {number: 2, score: 90},
+  {number: 3, score: 80},
+  {number: 4, score: 100},
+  {number: 5, score: 85}
+];
+
+// obj = {
+//     one: 1,
+//     two: 2,
+//     three: 3,
+// }
+
+// for (let key in obj) {
+//   let val = obj[key];
+
+//   console.log(key)
+//   console.log(val)
+// }
+
+
+
+// keys = Object.entities(obj);
+// [one,two,three]
+
+// for (let i = 0; i < keys.lenght; i++) {
+//     key = keys[i]; // 'one'
+//     obj.key // just string
+//     obj[key]
+// }
+
+
+console.log(isPassing(assessments1)) //=> true
+
+
+var assessments2 = [
+  {number: 1, score: 60},
+  {number: 2, score: 20},
+  {number: 3, score: 45}
+];
+
+console.log(isPassing(assessments2)) //) => false
+
+
+function isPassing(assessments) {
+    var score = 0
+    for (let obj of assessments){
+        // console.log(obj.score)
+        score += obj.score
+    }
+
+    console.log(score / assessments.length)
+    if (score / assessments.length > 70 ) {
+        return true
+    }
+    return false
+  }
+
+
+
+
+
+
+  /*******************************************************************************
+Write a function variableNameify(words) that takes in an array of words. The function
+should return a string representing the variable name obtained by combining the
+words and captitalizing them in mixCased style.
+
+Examples:
+
+variableNameify(['is', 'prime']) => 'isPrime'
+variableNameify(['remove', 'last', 'vowel']) => 'removeLastVowel'
+variableNameify(['MaX', 'VALUE']) => 'maxValue'
+*******************************************************************************/
+
+function variableNameify(words) {
+    // your code here...
+  }
+
+
+
+
+  /*******************************************************************************
+Write a function reverse2D(array) that takes in a 2D array of strings. The function
+should return a string representing the elements of the array in reverse order.
+
+Examples:
+
+var arr1 = [
+  ['a', 'b', 'c', 'd'],
+  ['e', 'f'],
+  ['g', 'h', 'i']
+];
+
+reverse2D(arr1) => 'ihgfedcba'
+
+
+var arr2 = [
+  ['Julian', 'Matt', 'Mike'],
+  ['Oscar', 'Patrick']
+];
+reverse2D(arr2) => 'PatrickOscarMikeMattJulian'
+
+*******************************************************************************/
+
+function reverse2D(array) {
+    // your code here...
+  }
+
+
+
+console.log(miniMaxSum([1, 2, 10, 4, 5]));
+
+  function miniMaxSum(arr) {
+    arr.sort((a,b)=> a-b)
+    return arr
+  }
+
+//   function miniMaxSum(arr) {
+//     var max = null
+//     var min = null
+//     arr.sort((a,b)=> a-b)
+//     for (let num of arr) {
+//         // max = Math.max(...arr)
+//         // min = Math.min(...arr)
+//         // max = arr[0], min = arr[arr.length-1]
+//         if ((max === null) || num > max) {
+//             max = num
+//         } 
+//         if ((min === null) || num < min) {
+//             min = num
+//         }
+//     }
+//     return [max, min]
+//   }
+
+
+// day 6
+
+// Write a function `myFind(arr, cb)` that accepts an array and a callback. It should
+// return the first element of the array where the callback returns true when passed
+// each element. The function should return undefined if the callback does not return
+// true for any element.
+
+// Example:
+
+function isUpper(str) {
+  return str.toUpperCase() === str;
+}
+
+// console.log(myFind(['bootcamp', 'PREP', 'IS', 'fun'], isUpper)) //=> 'PREP'
+// console.log(myFind(['hello', 'world'], isUpper)) //=> undefined
+
+
+function isEven(n) {
+  return n % 2 === 0;
+}
+
+// console.log(myFind([11, 7, 10, 20], isEven))// => 10
+// console.log(myFind([3, 5, 9], isEven))// => undefined
+
+
+function myFind(arr, cb) {
+    for (let cur of arr) {
+        if (cb(cur)) {
+            return cur
+        }
+    }
+    return undefined
+}
+
+
+
+
+console.log(hasSymmetry([1, 2, 3, 3, 2, 1]))// => true
+console.log(hasSymmetry([1, 2, 3, 3, 4, 1]))// => false
+console.log(hasSymmetry(['cat', 'dog', 'bird', 'dog', 'cat']))//
+console.log(hasSymmetry(['cat', 'dog', 'bird', 'bird', 'cat'])) //=> false
+
+
+function hasSymmetry(array) {
+    var mid = array.length/ 2
+ 
+    for (let i =0; i < array.length ; i++) {
+        console.log([array.length-1-i]) 
+        if (array[i] !== array[array.length-1-i]) { //  6-1-0 5
+            return false
+        }
+    }
+    return true
 }
