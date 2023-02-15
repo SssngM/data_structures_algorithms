@@ -51,8 +51,8 @@ function intersect(arr1, arr2) {
     var arr = []
     for (let char of arr1) {
         if (arr2.indexOf(char) > -1) {
-            console.log(char)
             arr.push(char)
+            
         }
     } 
     return arr
@@ -345,9 +345,9 @@ function objectPractice(obj) {
     let val = obj[key];
     // console.log(key)
     // console.log(val)
-    console.log(Object.keys(obj))
-    console.log(Object.values(obj))
-    // console.log( [key, val])
+    // console.log(Object.keys(obj)) // no need for loop [ 'one', 'two', 'three' ]
+    // console.log(Object.values(obj)) // [ 'Seung2', 2, 'Nate' ]
+    console.log( [key , val]) // [ 'one', 'Seung2' ] [ 'two', 2 ] [ 'three', 'Nate' ]
     } 
 }
 
@@ -411,11 +411,11 @@ function variableNameify(words) {
 
 
 
-  /*******************************************************************************
-Write a function reverse2D(array) that takes in a 2D array of strings. The function
-should return a string representing the elements of the array in reverse order.
 
-Examples:
+// Write a function reverse2D(array) that takes in a 2D array of strings. The function
+// should return a string representing the elements of the array in reverse order.
+
+// Examples:
 
 var arr1 = [
   ['a', 'b', 'c', 'd'],
@@ -423,19 +423,30 @@ var arr1 = [
   ['g', 'h', 'i']
 ];
 
-reverse2D(arr1) => 'ihgfedcba'
+console.log(reverse2D(arr1)) //=> 'ihgfedcba'
 
 
 var arr2 = [
   ['Julian', 'Matt', 'Mike'],
   ['Oscar', 'Patrick']
 ];
-reverse2D(arr2) => 'PatrickOscarMikeMattJulian'
+console.log(reverse2D(arr2)) //=> 'PatrickOscarMikeMattJulian'
 
-*******************************************************************************/
 
 function reverse2D(array) {
-    // your code here...
+    var str = ''
+    // for (let i = array.length-1; i >= 0  ;i--) {
+    //     for (let j=array[i].length-1; j >= 0 ;j--){
+    //         str += array[i][j] 
+    //     }
+    // }
+
+    for (let i = 0; i < array.length; i++) {
+        for (let j=0 ; j < array[i].length ; j++){
+            str += array[i][j] 
+        }
+    }
+    return str
   }
 
 
@@ -520,3 +531,39 @@ function hasSymmetry(array) {
     }
     return true
 }
+
+
+
+var log = ["fish-school", "fish-single", "fish-single", "shark-single", "shark-school", "fish-single", "fish-school"]
+
+console.log(fishShark(log))
+// 20 , 1, 1, -5 , 0 , 1 , 20
+
+function fishShark (log) {
+    var fish = 0
+for (let num of log) {
+    if (num === "fish-school") {
+         fish += 20  // 20 
+    }
+    if (num === "fish-single") {
+       fish += 1 // 21
+    }
+    if (num === "shark-single") {
+        fish  -=  5 // 
+        // 22 -5 
+    }
+    if (num === "shark-school") {
+        fish = 0
+    }
+  } 
+    return fish
+}
+     
+
+// var arr = [1,2,3,4,5]
+
+// for (let num of arr) {
+//     console.log(num)
+// }
+
+

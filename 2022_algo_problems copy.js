@@ -1,3 +1,24 @@
+console.log(lonelyinteger([1, 2, 3, 4, 3, 2, 1]))  // The unique element is 4
+
+function lonelyinteger(a) {
+  var count = {}    // { '1': 2, '2': 2, '3': 2, '4': 1 }
+  var arr = []
+  for (var key of a) {
+      if (count[key] === undefined) {
+          count[key] = 1
+      } else {
+        count[key]+= 1
+      }
+  }
+  // var arr = Object.values(count)
+  for (let key in count ) {
+  if (count[key] === 1) { // value === 1
+    return key
+  }
+ } 
+}
+
+
 /***********************************************************************
 Write a function `factorial(n)`, that returns the factorial of the
 number `n`. For example, the factorial of 4 is `4 * 3 * 2 * 1 = 24`.
@@ -154,6 +175,8 @@ console.log(unique([1,2,5]))
   
 //   return uniqueArray;
 // }
+
+
 
 
 // It should return an array of all the pairs of indices, whose elements sum to a multiple of 3.
@@ -361,7 +384,7 @@ function isPrime(number) {
 }
 
 // console.log(commonPrimeFactors(11,22)); // => [ 11 ]
-console.log(commonPrimeFactors(45, 60)); // => [ 3, 5 ]
+// console.log(commonPrimeFactors(45, 60)); // => [ 3, 5 ]
 
 
 
@@ -401,11 +424,39 @@ function isPrime(num)  { // [5] {
 //   }
 // }
 
+console.log('ispirme')
+console.log(primeFactors(10))// => [ 2, 5 ]
+console.log(primeFactors(24)) //=> [ 2, 3 ]
+console.log(primeFactors(30)) //=> [ 2, 3, 5 ]
+console.log(primeFactors(11)) //=> [11]
+
+
+
+function primeFactors(n) {
+  var arr = []
+  for (let i =2; i <= n; i++) {
+    if (n % i === 0 && isPrime(i)){
+      arr.push(i)
+    }
+  }
+  return arr
+}
+
+function isPrime(num) {
+    for (let i =2; i < num; i++) {
+      if (num % i === 0) {
+       return false
+      }
+    }
+    return true
+}
+
+
 
 // A factor is a number that divides another number with no remainder.
 // console.log(commonFactors(6, 24))// => [ 1, 2, 3, 6 ]
-commonFactors(11, 22); // => [ 1, 11 ]
-commonFactors(45, 60); // => [ 1, 3, 5, 15 ]
+// console.log(commonFactors(11, 22)); // => [ 1, 11 ]
+// console.log(commonFactors(45, 60)); // )=> [ 1, 3, 5, 15 ]
 
 
 function commonFactors(num1, num2) {
@@ -419,7 +470,7 @@ function commonFactors(num1, num2) {
 
 
 
-console.log(DivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
+// console.log(DivisibleByThreePairSum([1, 6, 3, 4, 2, 0]));
 // => [[0, 4], [1, 2], [1, 5], [2, 5], [3, 4]] with index number
 
 // console.log(DivisibleByThreePairSum([8, 3, 5, 9, 2]));
@@ -666,14 +717,15 @@ function breakingRecords(scores) {
 
 // console.log(birthday([1, 2, 1, 3, 2], 3, 2))
 // console.log(birthday([1,1,1,1,1,1], 3 ,1))
+console.log(birthday([4], 4 ,1))
 
-
+console.log('birthday')
 function birthday(s, d, m) {
   let count = 0;
   for (let i = 0; i <= s.length; i++) {
     let windowSum = 0;
     for (let j = 0; j < m; j++) {
-      windowSum = windowSum + s[i + j]; // S[0+0] s[0+1], s[0+2]// S[1+0] s[1+1],S[1+2] // S[2+0] S[2+1] //S[3+0] S[3+1]
+      windowSum += s[i + j]; // S[0+0] s[0+1], s[0+2]// S[1+0] s[1+1],S[1+2] // S[2+0] S[2+1] //S[3+0] S[3+1]
       //  =>  3 , 4        // 3 , 6              // 4 , 6  // 5
     } if (windowSum == d) {
       count += 1;
@@ -683,14 +735,13 @@ function birthday(s, d, m) {
 }
 
 
-
-function birthday(s, d, m) {
+function birthday(s, d, m) { // 
   let count = 0;
   for (let i = 0; i <= s.length; i++) {
     let windowSum = 0;
     for (let j = i; j < m; j++) {
       windowSum = s[i] + s[j + 1]  // s[0] + s[1] => 3 
-      console.log(windowSum = s[i] + s[j + 1])
+      console.log(windowSum)
       if (windowSum == d) {
         count += 1;
       }
@@ -931,17 +982,31 @@ function getMaxMin(arr) {
 
 
 // console.log(isSorted([9, 4, 1, 5, 6, 2])); // => false
-// console.log(isSorted([1, 2, 4, 5, 6, 9])); // => true
-
-
+console.log(isSorted([1, 2, 4, 5, 6, 9])); // => true
 function isSorted(array) {
-  for (let i=0; i <  array.length; i++) {
+  // console.log(array)
+  for (let i=0; i < array.length-1 ; i++) {
+    // console.log('arr[i]', arr[i])
     if (array[i] > array[i+1]){
       return false
     } 
   } 
   return true
 }
+
+// console.log(isSorted([1,2,4,4,5,1,1,1,1])) // 3
+
+
+// function isSorted(array) {
+//   var count = 0
+//   for (let i=0; i < array.length-1 ; i++) {
+//     if (array[i] === array[i+1]){
+//       count ++
+//       i++
+//     } 
+//   } 
+//   return count
+// }
 
 
 // if consecutive speeds in the array differ by no more than 5, false otherwise.
@@ -1300,6 +1365,28 @@ function solution(inputString) {
   return newStr
 }
 
+
+
+
+function caesarCipher(s, k) {
+  var alpha = 'abcdefghijklmnopqrstuvwxyzabc'
+  var alphaUpper = 'ABCDEFJGHIJKLMNOPQURSTUVWXYZABC'
+  var newStr = '' 
+
+  for (let str of s) {
+      if ( alphaUpper.indexOf(str) > -1 ) {
+       let idxUpper = alphaUpper.indexOf(str)
+          idxUpper = idxUpper + k
+          newStr += alphaUpper[idxUpper]
+      } else {
+          let idx = alpha.indexOf(str)
+          idx = idx + k
+          newStr += alpha[idx]
+      }
+      console.log(newStr)
+  } 
+  return newStr
+}
 
 
 
